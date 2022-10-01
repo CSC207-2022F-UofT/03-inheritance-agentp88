@@ -29,5 +29,6 @@ class BagMain {
      */
     public static int countCrossbodyStraps(Bag[] bags) {
         // TODO: Implement this.
+        return 0;
     }
 }
