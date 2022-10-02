@@ -33,6 +33,8 @@ public abstract class Bag {
     public Bag(String color, int capacity) {
         this.color = color;
         this.capacity = capacity;
+        this.numberOfContents = 0;
+        this.contents = new String[this.capacity];
     }
 
 
@@ -83,8 +85,7 @@ public abstract class Bag {
             this.numberOfContents++;
             return true;
         }
-        else
-        {
+        else {
             return false;
         }
     }
@@ -128,7 +129,7 @@ public abstract class Bag {
         // TODO: Implement this method.
         this.capacity += n;
         String[] newArr = new String[this.capacity];
-        for (int i = 0; i < this.contents.length; i++)
+        for (int i = 0; i < this.numberOfContents; i++)
         {
             newArr[i] = this.contents[i];
         }
