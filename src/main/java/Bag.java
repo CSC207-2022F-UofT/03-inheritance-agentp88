@@ -128,7 +128,10 @@ public abstract class Bag {
         // TODO: Implement this method.
         this.capacity += n;
         String[] newArr = new String[this.capacity];
-        if (this.numberOfContents >= 0) System.arraycopy(this.contents, 0, newArr, 0, this.numberOfContents);
+        for (int i = 0; i < this.contents.length; i++)
+        {
+            newArr[i] = this.contents[i];
+        }
         this.contents = newArr;
     }
 
