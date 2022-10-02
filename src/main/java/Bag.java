@@ -79,14 +79,8 @@ public abstract class Bag {
     public boolean addItem(String item) {
         if (this.numberOfContents < this.capacity)
         {
+            this.contents[this.numberOfContents] = item;
             this.numberOfContents++;
-            String[] newArr = new String[this.capacity]; //creates a copy of the old array that is +1 longer.
-            for (int i = 0; i < this.numberOfContents; i++)
-            {
-                newArr[i] = this.contents[i];
-            }
-            newArr[this.numberOfContents - 1] = item;
-            this.contents = newArr;
             return true;
         }
         else
@@ -94,7 +88,6 @@ public abstract class Bag {
             return false;
         }
     }
-
 
 
 
@@ -107,19 +100,18 @@ public abstract class Bag {
      *
      * If there are no items in this Bag, return null.
      *
-     * @return
+     * @return the last item in the bag
      */
     public String popItem()
     {
-        String lastItem;
-        this.numberOfContents--;
-        String[] newArr = new String[this.capacity]; //creates a copy of the old array that is +1 longer.
-        for (int i = 0; i < this.numberOfContents; i++)
+        if (this.numberOfContents == 0)
         {
-            newArr[i] = this.contents[i];
+            return null;
         }
-        lastItem = this.contents[this.numberOfContents - 1]; //Gets the last item of the contents
-        this.contents = newArr; //replaces this.contents into the new array without the last item.
+        String lastItem;
+        lastItem = this.contents[this.numberOfContents - 1];
+        this.contents[this.numberOfContents - 1] = null;
+        this.numberOfContents--;
         return lastItem;
     }
 
@@ -145,7 +137,7 @@ public abstract class Bag {
      * This method requires you to have created the private
      * instance variables mentioned above.
      *
-     * @return
+     * @return the details of the bag
      */
     @Override
     public String toString() {
